@@ -36,6 +36,7 @@ App.js           # app state and list (useReducer)
 package.json
 app.json
 babel.config.js
+```
 
 ## Behavior details
 
@@ -43,7 +44,6 @@ babel.config.js
 - The list orders incomplete tasks first, then completed tasks (preserves relative order).
 - Incomplete tasks show a small edit icon at the right; tapping it focuses the inline textbox for quick edits.
 - No persistence: add `AsyncStorage` later if you want to save tasks between sessions.
-```
 
 ## Notes
 

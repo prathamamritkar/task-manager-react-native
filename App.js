@@ -50,7 +50,6 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  // Ancient Asian mystic theme: parchment background, deep brown/red header, saffron accents
   container: { flex: 1, backgroundColor: '#FBF6EF' },
   header: { backgroundColor: '#7B2F1A', padding: 20, paddingTop: 30, paddingBottom: 20 },
   headerTitle: { fontSize: 24, fontWeight: '700', color: '#FFF8E6' },

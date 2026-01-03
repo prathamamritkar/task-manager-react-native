@@ -8,6 +8,8 @@ A tiny Task Manager built with React Native + Expo. Focus: add tasks, view them 
 - Display tasks using `FlatList`
 - Mark tasks as completed by tapping an item
 - Implemented with functional components and hooks (no backend)
+- Toggle completion with a checkbox (checked items shown below incomplete ones)
+- Edit incomplete tasks inline via a subtle edit icon (tap to focus)
 
 ## Quick Start
 
@@ -34,6 +36,13 @@ App.js           # app state and list (useReducer)
 package.json
 app.json
 babel.config.js
+
+## Behavior details
+
+- Tasks are stored in-memory using a reducer (`useReducer`).
+- The list orders incomplete tasks first, then completed tasks (preserves relative order).
+- Incomplete tasks show a small edit icon at the right; tapping it focuses the inline textbox for quick edits.
+- No persistence: add `AsyncStorage` later if you want to save tasks between sessions.
 ```
 
 ## Notes

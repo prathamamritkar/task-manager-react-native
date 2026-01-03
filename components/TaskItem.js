@@ -10,7 +10,6 @@ const TaskItem = ({ task, onToggle, onEdit }) => {
 
   useEffect(() => {
     if (editing) {
-      // focus the input when entering edit mode
       setTimeout(() => inputRef.current?.focus?.(), 0);
     }
   }, [editing]);

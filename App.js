@@ -10,6 +10,8 @@ const reducer = (state, action) => {
       if (!text) return state;
       return [...state, { id: String(Date.now() + Math.random()), text, completed: false }];
     }
+    case 'EDIT':
+      return state.map(t => (t.id === action.id ? { ...t, text: action.text } : t));
     case 'TOGGLE':
       return state.map(t => (t.id === action.id ? { ...t, completed: !t.completed } : t));
     default:
@@ -22,6 +24,7 @@ export default function App() {
 
   const addTask = useCallback(text => dispatch({ type: 'ADD', text }), []);
   const toggleTaskCompletion = useCallback(id => dispatch({ type: 'TOGGLE', id }), []);
+  const editTask = useCallback((id, text) => dispatch({ type: 'EDIT', id, text }), []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -34,8 +37,10 @@ export default function App() {
 
       <View style={styles.tasksContainer}>
         <FlatList
-          data={tasks}
-          renderItem={({ item }) => <TaskItem task={item} onToggle={toggleTaskCompletion} />}
+          data={[...tasks.filter(t => !t.completed), ...tasks.filter(t => t.completed)]}
+          renderItem={({ item }) => (
+            <TaskItem task={item} onToggle={toggleTaskCompletion} onEdit={editTask} />
+          )}
           keyExtractor={item => item.id}
           showsVerticalScrollIndicator={false}
         />
